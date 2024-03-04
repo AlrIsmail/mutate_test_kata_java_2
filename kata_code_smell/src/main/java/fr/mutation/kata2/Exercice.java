@@ -4,24 +4,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class Exercice {
 
-    public Map<Integer, String> f1(int a1, List<Integer> a2) {
-        HashMap<Integer, String> a7 = new HashMap<Integer, String>();
-        int a5 = 0;
-        StringBuilder a9 = new StringBuilder();
-        for (int a3 = 0; a3 < a2.size() && a3 < a1; a3++) {
-            int a6 = a2.get(a3);
-            int a10 = a6 - 1;
-            if (a6 >= 0 && (a10) < 20) {
-                a9.append(a6).append(" ");
+    public Map<Integer, String> traiterEntiers(int limite, List<Integer> entiers) {
+        HashMap<Integer, String> resultat = new HashMap<>();
+        int nombreNegatifs = 0;
+        StringBuilder entiersPositifs = new StringBuilder();
+
+        for (int i = 0; i < entiers.size() && i < limite; i++) {
+            int entierCourant = entiers.get(i);
+            int entierAjuste = entierCourant - 1;
+
+            if (entierCourant >= 0 && entierAjuste < 20) {
+                entiersPositifs.append(entierCourant).append(" ");
             } else {
-                a5++;
+                nombreNegatifs++;
             }
         }
-        a9.append("\n");
-        a7.put(a5, a9.toString());
-        return a7;
+
+        entiersPositifs.append("\n");
+        resultat.put(nombreNegatifs, entiersPositifs.toString());
+        return resultat;
     }
 }
